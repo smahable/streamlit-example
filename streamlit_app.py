@@ -3,7 +3,15 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import re
 
+collect_numbers = lambda x : [int(i) for i in re.split("[^0-9]", x) if i != ""]
+
+numbers = st.text_input("PLease enter numbers")
+st.write(collect_numbers(numbers))
+
+fixed_numbers = st.multiselect("Please select numbers", [1, 2, 3, 4, 5])
+st.write(fixed_numbers)
 """
 # Welcome to Streamlit!
 
@@ -36,3 +44,11 @@ with st.echo(code_location='below'):
     st.altair_chart(alt.Chart(pd.DataFrame(data), height=800, width=500)
         .mark_circle(color='#0068c9', opacity=0.9)
         .encode(x='x:Q', y='y:Q'))
+
+collect_numbers = lambda x : [int(i) for i in re.split("[^0-9]", x) if i != ""]
+
+numbers = st.text_input("PLease enter numbers")
+st.write(collect_numbers(numbers))
+
+fixed_numbers = st.multiselect("Please select numbers", [1, 2, 3, 4, 5])
+st.write(fixed_numbers)
